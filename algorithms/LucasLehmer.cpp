@@ -4,10 +4,21 @@
 
 #include "LucasLehmer.h"
 
-void LucasLehmer::runCode() {
-
+LucasLehmer::LucasLehmer() : Algorithm("Lucas Lehmer Primality Test"){
+    for(int size : {1, 100, 1000, 10000, 100000}){
+        scoreBySize.emplace(size, -1);
+    }
 }
 
-LucasLehmer::LucasLehmer() : Algorithm("Lucas Lehmer Primality Test"){
+void LucasLehmer::runTest() {
+    vector<int> sizes;
+    for(auto const& imap: scoreBySize){
+        sizes.push_back(imap.first);
+    }
+
+    this->execute(sizes);
+}
+
+void LucasLehmer::runCode(int size) {
 
 }

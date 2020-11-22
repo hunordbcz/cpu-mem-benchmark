@@ -11,6 +11,11 @@
 #include "Terminal.h"
 #include "UI.h"
 #include "algorithms/TestAlgorithm.h"
+#include "algorithms/GreatestCommonDivisor.h"
+#include "algorithms/FibonacciNumber.h"
+#include "algorithms/DigitOfPi.h"
+#include "algorithms/Ackermann.h"
+#include "algorithms/LucasLehmer.h"
 
 using namespace std;
 
@@ -101,9 +106,11 @@ private:
 public:
 
     Benchmark() {
-        cpuAlgorithms.push_back(new TestAlgorithm);
-        cpuAlgorithms.push_back(new TestAlgorithm);
-        cpuAlgorithms.push_back(new TestAlgorithm);
+        cpuAlgorithms.push_back(new GreatestCommonDivisor);
+        cpuAlgorithms.push_back(new FibonacciNumber);
+        cpuAlgorithms.push_back(new DigitOfPi);
+        cpuAlgorithms.push_back(new Ackermann);
+        cpuAlgorithms.push_back(new LucasLehmer);
         memoryAlgorithms.push_back(new TestAlgorithm);
         memoryAlgorithms.push_back(new TestAlgorithm);
         memoryAlgorithms.push_back(new TestAlgorithm);
@@ -135,14 +142,14 @@ public:
             if(!algorithm->getIsActive()){
                 continue;
             }
-            algorithm->execute(1000);
+            algorithm->runTest();
         }
 
         for(Algorithm *algorithm : memoryAlgorithms){
             if(!algorithm->getIsActive()){
                 continue;
             }
-            algorithm->execute(1000);
+            algorithm->runTest();
         }
 
         status = RESULT;

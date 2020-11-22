@@ -12,9 +12,10 @@ class DigitOfPi : public Algorithm {
 public:
     DigitOfPi();
 
-protected:
-    void runCode() override;
+    void runTest() override;
 
+protected:
+    void runCode(int size) override;
 };
 
 

@@ -8,11 +8,14 @@
 #include <cstdint>
 #include <cstdio>
 #include <iostream>
+#include <map>
+#include <vector>
 
 using namespace std;
 
 class Algorithm {
 protected:
+    map<int, long long> scoreBySize;
     bool isActive;
     string name;
 
@@ -34,12 +37,16 @@ private:
 
 protected:
 
-    virtual void runCode() = 0;
+    void execute(const vector<int>& iterations);
+
+    virtual void runCode(int size) = 0;
 
 public:
-    void execute(int iterations);
+    virtual void runTest() = 0;
 
     long long getFinalScore();
+
+    map<int, long long> getScoresBySize();
 
     bool getIsActive() const;
 

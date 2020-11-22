@@ -27,8 +27,8 @@ uint64_t Algorithm::elapsed(uint32_t startHigh, uint32_t startLow, uint32_t endH
     return end - start;
 }
 
-void Algorithm::execute(int iterations) {
-    if(!isActive){
+void Algorithm::execute(const vector<int> &iterations) {
+    if (!isActive) {
         return;
     }
 
@@ -37,17 +37,21 @@ void Algorithm::execute(int iterations) {
     end_hi = 0;
     end_lo = 0;
 
-    long long score = 0;
+    for (int size : iterations) {
+        RDTSC_START()
+        runCode(size);
+        RDTSC_STOP()
 
-    for(int i = 0; i< iterations; i++){
-        RDTSC_START();
-        runCode();
-        RDTSC_STOP();
-
-        score += getScore();
+        scoreBySize[size] = getScore();
     }
 
-    finalScore = score / iterations;
+    long long score = 0;
+    map<int, long long>::iterator itr;
+    for (itr = scoreBySize.begin(); itr != scoreBySize.end(); ++itr) {
+        score += itr->second;
+    }
+
+    finalScore = score / (long long) scoreBySize.size();
 }
 
 uint64_t Algorithm::getScore() {
@@ -66,12 +70,16 @@ string Algorithm::getName() {
     return this->name;
 }
 
-Algorithm::Algorithm(const string &name){
+Algorithm::Algorithm(const string &name) {
     this->name = name;
 }
 
 long long Algorithm::getFinalScore() {
     return this->finalScore;
+}
+
+map<int, long long> Algorithm::getScoresBySize() {
+    return scoreBySize;
 }
 
 

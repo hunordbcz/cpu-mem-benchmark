@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <utility>
+#include <zconf.h>
 #include "vector"
 #include "algorithms/Algorithm.h"
 #include "SystemInfo.h"
@@ -101,6 +102,28 @@ private:
         cout << "> ";
     }
 
+    void printAlgorithmDetails(Algorithm *algorithm){
+        if (!algorithm->getIsActive()) {
+            return;
+        }
+
+        cout << endl << algorithm->getName();
+        if (algorithm->getFinalScore() == -1) {
+            cout << " - RUNNING" << endl;
+        } else {
+            cout << " - Final Score: " << algorithm->getFinalScore() << endl;
+        }
+
+        for (auto const &element: algorithm->getScoresBySize()) {
+            cout << "\tSize: " << element.first << " - Score: ";
+            if (element.second == -1) {
+                cout << " RUNNING" << endl;
+            } else {
+                cout << element.second << endl;
+            }
+        }
+    }
+
     void printTestingMenu() {
         if (showSpecs) {
             systemInfo->printCPUInfo();
@@ -109,35 +132,15 @@ private:
         cout
                 << "------------------------" << endl
                 << "Memory algorithms:" << endl;
-
         for (Algorithm *algorithm: memoryAlgorithms) {
-            if (!algorithm->getIsActive()) {
-                continue;
-            }
-
-            cout << algorithm->getName();
-            if (algorithm->getFinalScore() == -1) {
-                cout << " - RUNNING" << endl;
-            } else {
-                cout << " - Score: " << algorithm->getFinalScore() << endl;
-            }
+            printAlgorithmDetails(algorithm);
         }
 
-        cout
-                << "CPU algorithms:" << endl;
-
+        cout<< "\nCPU algorithms:" << endl;
         for (Algorithm *algorithm: cpuAlgorithms) {
-            if (!algorithm->getIsActive()) {
-                continue;
-            }
-
-            cout << algorithm->getName();
-            if (algorithm->getFinalScore() == -1) {
-                cout << " - RUNNING" << endl;
-            } else {
-                cout << " - Score: " << algorithm->getFinalScore() << endl;
-            }
+            printAlgorithmDetails(algorithm);
         }
+        sleep(1);
     }
 
     void run() {
