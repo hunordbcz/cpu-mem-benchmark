@@ -11,6 +11,22 @@
 #include <map>
 #include <vector>
 
+#define RDTSC_START()            \
+    __asm__ volatile("CPUID\n\t" \
+                     "RDTSC\n\t" \
+                     "mov %%edx, %0\n\t" \
+                     "mov %%eax, %1\n\t" \
+                     : "=r" (start_hi), "=r" (start_lo) \
+                     :: "%rax", "%rbx", "%rcx", "%rdx");
+
+#define RDTSC_STOP()              \
+    __asm__ volatile("RDTSCP\n\t" \
+                     "mov %%edx, %0\n\t" \
+                     "mov %%eax, %1\n\t" \
+                     "CPUID\n\t" \
+                     : "=r" (end_hi), "=r" (end_lo) \
+                     :: "%rax", "%rbx", "%rcx", "%rdx");
+
 using namespace std;
 
 class Algorithm {
@@ -19,20 +35,21 @@ protected:
     bool isActive;
     string name;
 
+    uint32_t end_hi = 0;
+    uint32_t end_lo = 0;
+
+    uint64_t getScore();
+
+    uint32_t start_hi = 0;
+    uint32_t start_lo = 0;
 public:
     explicit Algorithm(const string &name);
 
 private:
     long long finalScore = -1;
 
-    uint32_t start_hi = 0, start_lo = 0;
-    uint32_t end_hi = 0, end_lo = 0;
-
     uint64_t elapsed(uint32_t startHigh, uint32_t startLow,
                      uint32_t endHigh, uint32_t endLow);
-
-    uint64_t getScore();
-
 
 
 protected:

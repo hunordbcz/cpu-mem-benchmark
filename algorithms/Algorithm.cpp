@@ -4,23 +4,6 @@
 
 #include "Algorithm.h"
 
-#define RDTSC_START()            \
-    __asm__ volatile("CPUID\n\t" \
-                     "RDTSC\n\t" \
-                     "mov %%edx, %0\n\t" \
-                     "mov %%eax, %1\n\t" \
-                     : "=r" (start_hi), "=r" (start_lo) \
-                     :: "%rax", "%rbx", "%rcx", "%rdx");
-
-#define RDTSC_STOP()              \
-    __asm__ volatile("RDTSCP\n\t" \
-                     "mov %%edx, %0\n\t" \
-                     "mov %%eax, %1\n\t" \
-                     "CPUID\n\t" \
-                     : "=r" (end_hi), "=r" (end_lo) \
-                     :: "%rax", "%rbx", "%rcx", "%rdx");
-
-
 uint64_t Algorithm::elapsed(uint32_t startHigh, uint32_t startLow, uint32_t endHigh, uint32_t endLow) {
     uint64_t start = (((uint64_t) startHigh) << 32) | startLow;
     uint64_t end = (((uint64_t) endHigh) << 32) | endLow;
@@ -38,20 +21,24 @@ void Algorithm::execute(const vector<int> &iterations) {
     end_lo = 0;
 
     for (int size : iterations) {
-        RDTSC_START()
-        runCode(size);
-        RDTSC_STOP()
+        long long iterationScore = 0;
+        for(int i = 0; i < 10; i++){
+            RDTSC_START()
+            runCode(size);
+//            RDTSC_STOP()
+            iterationScore += getScore();
+        }
 
-        scoreBySize[size] = getScore();
+        scoreBySize[size] = iterationScore / 10;
     }
 
-    long long score = 0;
+    long long finalScore = 0;
     map<int, long long>::iterator itr;
     for (itr = scoreBySize.begin(); itr != scoreBySize.end(); ++itr) {
-        score += itr->second;
+        finalScore += itr->second;
     }
 
-    finalScore = score / (long long) scoreBySize.size();
+    this->finalScore = finalScore / (long long) scoreBySize.size();
 }
 
 uint64_t Algorithm::getScore() {

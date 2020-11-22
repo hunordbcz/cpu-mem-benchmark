@@ -17,7 +17,7 @@ using namespace std;
 class UI {
 public:
 
-    bool showSpecs;
+    bool showSpecs = true;
     bool showHelp;
     bool showMenu = true;
 
@@ -107,20 +107,26 @@ private:
             return;
         }
 
-        cout << endl << algorithm->getName();
-        if (algorithm->getFinalScore() == -1) {
-            cout << " - RUNNING" << endl;
-        } else {
-            cout << " - Final Score: " << algorithm->getFinalScore() << endl;
-        }
-
+        cout << endl << algorithm->getName() << endl;
         for (auto const &element: algorithm->getScoresBySize()) {
-            cout << "\tSize: " << element.first << " - Score: ";
+            cout << "\tSize: \t" << element.first;
+            if(element.first < 10000000){
+                cout<<"\t";
+            }
+            cout<<"\t - Score: ";
+
             if (element.second == -1) {
-                cout << " RUNNING" << endl;
+                cout << "RUNNING" << endl;
             } else {
                 cout << element.second << endl;
             }
+        }
+
+        cout<<"\tResults:\t\t - Score: ";
+        if (algorithm->getFinalScore() == -1) {
+            cout << "RUNNING" << endl;
+        } else {
+            cout << algorithm->getFinalScore() << endl ;
         }
     }
 

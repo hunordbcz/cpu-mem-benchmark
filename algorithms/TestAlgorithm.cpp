@@ -1,8 +1,3 @@
-//
-// Created by debre on 11/9/2020.
-//
-
-#include <zconf.h>
 #include "TestAlgorithm.h"
 
 TestAlgorithm::TestAlgorithm() : Algorithm("Test Algorithm") {
@@ -28,6 +23,5 @@ void TestAlgorithm::runCode(int size) {
         } else {
             value /= i;
         }
-        usleep(1);
     }
 }

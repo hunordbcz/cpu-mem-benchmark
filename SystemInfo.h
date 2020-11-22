@@ -9,7 +9,10 @@
 #include <sys/utsname.h>
 
 class SystemInfo {
+
 public:
+    SystemInfo();
+
     void printCPUInfo();
 };
 

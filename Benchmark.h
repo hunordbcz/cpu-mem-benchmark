@@ -13,9 +13,10 @@
 #include "algorithms/TestAlgorithm.h"
 #include "algorithms/GreatestCommonDivisor.h"
 #include "algorithms/FibonacciNumber.h"
-#include "algorithms/DigitOfPi.h"
+#include "algorithms/PiApproximation.h"
 #include "algorithms/Ackermann.h"
 #include "algorithms/LucasLehmer.h"
+#include "algorithms/LIIDS.h"
 
 using namespace std;
 
@@ -108,8 +109,9 @@ public:
     Benchmark() {
         cpuAlgorithms.push_back(new GreatestCommonDivisor);
         cpuAlgorithms.push_back(new FibonacciNumber);
-        cpuAlgorithms.push_back(new DigitOfPi);
-        cpuAlgorithms.push_back(new Ackermann);
+        cpuAlgorithms.push_back(new PiApproximation);
+        cpuAlgorithms.push_back(new LIIDS);
+//        cpuAlgorithms.push_back(new Ackermann);
         cpuAlgorithms.push_back(new LucasLehmer);
         memoryAlgorithms.push_back(new TestAlgorithm);
         memoryAlgorithms.push_back(new TestAlgorithm);
@@ -120,33 +122,44 @@ public:
     }
 
     void start() {
+        setup();
+    }
+
+    void setup(){
         string message;
         do {
             ui->refreshSetup(message);
             readCommand(&message);
         } while (SETUP == status);
 
+        testing();
+    }
+
+    void testing(){
         thread thread(&Benchmark::runTests, this);
         do {
             ui->refreshTesting();
         } while (TEST == status);
 
-        cin >> message;
-//        do {
-//
-//        } while (RESULT == status);
+        ui->refreshTesting();
+        thread.join();
+
+        string test;
+        cin >> test;
+
+        setup();
     }
 
-    void runTests(){
-        for(Algorithm *algorithm : cpuAlgorithms){
-            if(!algorithm->getIsActive()){
+    void runTests() {
+        for (Algorithm *algorithm : cpuAlgorithms) {
+            if (!algorithm->getIsActive()) {
                 continue;
             }
             algorithm->runTest();
         }
 
-        for(Algorithm *algorithm : memoryAlgorithms){
-            if(!algorithm->getIsActive()){
+        for (Algorithm *algorithm : memoryAlgorithms) {
+            if (!algorithm->getIsActive()) {
                 continue;
             }
             algorithm->runTest();
