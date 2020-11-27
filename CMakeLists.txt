@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(scs_terminal
         main.cpp
-        Terminal.cpp Terminal.h
         Benchmark.cpp Benchmark.h
         algorithms/Algorithm.cpp algorithms/Algorithm.h
         algorithms/TestAlgorithm.cpp algorithms/TestAlgorithm.h

@@ -8,7 +8,7 @@
 
 #include "Algorithm.h"
 
-class LIIDS : public Algorithm{
+class LIIDS : public Algorithm {
 public:
     LIIDS();
 

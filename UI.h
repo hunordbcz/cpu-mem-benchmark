@@ -61,6 +61,7 @@ private:
     void printSetupMenu(const string &message) {
         if (showSpecs) {
             systemInfo->printCPUInfo();
+            cout << endl;
         }
 
         if (showMenu) {
@@ -102,7 +103,7 @@ private:
         cout << "> ";
     }
 
-    void printAlgorithmDetails(Algorithm *algorithm){
+    void printAlgorithmDetails(Algorithm *algorithm) {
         if (!algorithm->getIsActive()) {
             return;
         }
@@ -110,10 +111,10 @@ private:
         cout << endl << algorithm->getName() << endl;
         for (auto const &element: algorithm->getScoresBySize()) {
             cout << "\tSize: \t" << element.first;
-            if(element.first < 10000000){
-                cout<<"\t";
+            if (element.first < 10000000) {
+                cout << "\t";
             }
-            cout<<"\t - Score: ";
+            cout << "\t - Score: ";
 
             if (element.second == -1) {
                 cout << "RUNNING" << endl;
@@ -122,11 +123,11 @@ private:
             }
         }
 
-        cout<<"\tResults:\t\t - Score: ";
+        cout << "\tResults:\t\t - Score: ";
         if (algorithm->getFinalScore() == -1) {
             cout << "RUNNING" << endl;
         } else {
-            cout << algorithm->getFinalScore() << endl ;
+            cout << algorithm->getFinalScore() << endl;
         }
     }
 
@@ -136,14 +137,16 @@ private:
         }
 
         cout
-                << "------------------------" << endl
-                << "Memory algorithms:" << endl;
-        for (Algorithm *algorithm: memoryAlgorithms) {
+                << "------------------------"
+                << "\nCPU algorithms:" << endl;
+        for (Algorithm *algorithm: cpuAlgorithms) {
             printAlgorithmDetails(algorithm);
         }
 
-        cout<< "\nCPU algorithms:" << endl;
-        for (Algorithm *algorithm: cpuAlgorithms) {
+        cout
+                << "------------------------" << endl
+                << "Memory algorithms:" << endl;
+        for (Algorithm *algorithm: memoryAlgorithms) {
             printAlgorithmDetails(algorithm);
         }
         sleep(1);

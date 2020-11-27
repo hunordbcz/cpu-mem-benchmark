@@ -3,26 +3,35 @@
 //
 
 #include "GreatestCommonDivisor.h"
+#include "math.h"
 
 GreatestCommonDivisor::GreatestCommonDivisor() : Algorithm("Greatest Common Divisor") {
-    for(int size : {1, 100, 1000, 10000, 100000}){
+    for (int size : {1, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000}) {
         scoreBySize.emplace(size, -1);
     }
 }
 
-int GreatestCommonDivisor::gcd(int a, int b) {
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-}
-
 void GreatestCommonDivisor::runCode(int size) {
-    gcd(size,97);
+    int a = size;
+    int b = sqrt(size);
+    RDTSC_START()
+    while (a != b) {
+        if (a == 0 || b == 0) {
+            break;
+        }
+        if (a > b) {
+            a -= b;
+        } else {
+            b -= a;
+        }
+    }
+    (void) a;
+    RDTSC_STOP()
 }
 
 void GreatestCommonDivisor::runTest() {
     vector<int> sizes;
-    for(auto const& imap: scoreBySize){
+    for (auto const &imap: scoreBySize) {
         sizes.push_back(imap.first);
     }
 

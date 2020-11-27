@@ -8,9 +8,10 @@
 
 #include "Algorithm.h"
 
-class LucasLehmer: public Algorithm {
+class LucasLehmer : public Algorithm {
 public:
     LucasLehmer();
+
     void runTest() override;
 
 protected:

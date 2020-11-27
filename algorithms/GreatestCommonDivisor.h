@@ -11,13 +11,11 @@
 class GreatestCommonDivisor : public Algorithm {
 public:
     GreatestCommonDivisor();
+
     void runTest() override;
 
 protected:
     void runCode(int size) override;
-
-private:
-    int gcd(int a, int b);
 };
 
 

@@ -11,6 +11,7 @@
 class TestAlgorithm : public Algorithm {
 public:
     TestAlgorithm();
+
     void runTest() override;
 
 protected:

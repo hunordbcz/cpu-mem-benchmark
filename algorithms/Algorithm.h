@@ -54,7 +54,7 @@ private:
 
 protected:
 
-    void execute(const vector<int>& iterations);
+    void execute(const vector<int> &iterations);
 
     virtual void runCode(int size) = 0;
 
@@ -70,6 +70,8 @@ public:
     void setIsActive(bool isActive);
 
     string getName();
+
+    void resetScores();
 };
 
 

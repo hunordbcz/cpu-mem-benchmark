@@ -8,7 +8,6 @@
 #include <utility>
 #include <vector>
 #include <thread>
-#include "Terminal.h"
 #include "UI.h"
 #include "algorithms/TestAlgorithm.h"
 #include "algorithms/GreatestCommonDivisor.h"
@@ -39,7 +38,7 @@ private:
         CONTINUE
     } COMMAND;
 
-    STATUS status;
+    STATUS currentStatus;
     UI *ui;
 
     void processCommand(pair<COMMAND, int> pair, string *message) {
@@ -83,7 +82,7 @@ private:
         if (text == "exit" || text == "quit") {
             command = EXIT;
         } else if (text == "start" || text == "start" || text == "test" || text == "continue") {
-            status = TEST;
+            currentStatus = TEST;
             command = CONTINUE;
         } else {
             try {
@@ -118,7 +117,7 @@ public:
         memoryAlgorithms.push_back(new TestAlgorithm);
 
         this->ui = new UI(cpuAlgorithms, memoryAlgorithms);
-        this->status = SETUP;
+        this->currentStatus = SETUP;
     }
 
     void start() {
@@ -126,20 +125,22 @@ public:
     }
 
     void setup(){
+        currentStatus = SETUP;
         string message;
         do {
             ui->refreshSetup(message);
             readCommand(&message);
-        } while (SETUP == status);
+        } while (SETUP == currentStatus);
 
         testing();
     }
 
     void testing(){
+        currentStatus = TEST;
         thread thread(&Benchmark::runTests, this);
         do {
             ui->refreshTesting();
-        } while (TEST == status);
+        } while (TEST == currentStatus);
 
         ui->refreshTesting();
         thread.join();
@@ -165,7 +166,7 @@ public:
             algorithm->runTest();
         }
 
-        status = RESULT;
+        currentStatus = RESULT;
     }
 };
 

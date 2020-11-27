@@ -6,7 +6,7 @@
 
 void LIIDS::runTest() {
     vector<int> sizes;
-    for(auto const& imap: scoreBySize){
+    for (auto const &imap: scoreBySize) {
         sizes.push_back(imap.first);
     }
 
@@ -49,7 +49,7 @@ void LIIDS::runCode(int N) {
     RDTSC_STOP();
 }
 
-LIIDS::LIIDS() : Algorithm("LIIDS") {
+LIIDS::LIIDS() : Algorithm("Length of longest increasing index dividing subsequence") {
     for (int size : {1, 10, 100, 1000, 1000, 10000, 100000}) {
         scoreBySize.emplace(size, -1);
     }
