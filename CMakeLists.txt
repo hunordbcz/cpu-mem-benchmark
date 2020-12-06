@@ -16,5 +16,5 @@ add_executable(scs_terminal
         algorithms/PiApproximation.cpp algorithms/PiApproximation.h
         algorithms/Ackermann.cpp algorithms/Ackermann.h
         algorithms/LucasLehmer.cpp algorithms/LucasLehmer.h
-        algorithms/LIIDS.cpp algorithms/LIIDS.h)
+        algorithms/LIIDS.cpp algorithms/LIIDS.h algorithms/RandomAccessMemory.cpp algorithms/RandomAccessMemory.h algorithms/NormalAccessMemory.cpp algorithms/NormalAccessMemory.h algorithms/BackwardAccessMemory.cpp algorithms/BackwardAccessMemory.h algorithms/FillMemory.cpp algorithms/FillMemory.h algorithms/MemoryAlgorithm.cpp algorithms/MemoryAlgorithm.h)
 target_link_libraries(scs_terminal pthread)

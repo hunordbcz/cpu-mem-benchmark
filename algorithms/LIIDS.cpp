@@ -4,15 +4,6 @@
 
 #include "LIIDS.h"
 
-void LIIDS::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 void randomArray(int array[], int size) {
     for (int i = 0; i < size; i++)
         array[i] = rand() % size;
@@ -21,7 +12,7 @@ void randomArray(int array[], int size) {
 void LIIDS::runCode(int N) {
     int arr[N];
     randomArray(arr, N);
-    RDTSC_START();
+    RDTSC_START()
     int dp[N + 1];
 
     int ans = 0;
@@ -46,7 +37,7 @@ void LIIDS::runCode(int N) {
         // Longest length is stored
         ans = max(ans, dp[i]);
     }
-    RDTSC_STOP();
+    RDTSC_STOP()
 }
 
 LIIDS::LIIDS() : Algorithm("Length of longest increasing index dividing subsequence") {

@@ -10,15 +10,6 @@ FibonacciNumber::FibonacciNumber() : Algorithm("Nth Fibonacci Number") {
     }
 }
 
-void FibonacciNumber::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 void FibonacciNumber::runCode(int size) {
     RDTSC_START()
     int a = 0, b = 1, c, i;

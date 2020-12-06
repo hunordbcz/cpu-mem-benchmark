@@ -28,12 +28,3 @@ void GreatestCommonDivisor::runCode(int size) {
     (void) a;
     RDTSC_STOP()
 }
-
-void GreatestCommonDivisor::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}

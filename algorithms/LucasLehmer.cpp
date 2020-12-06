@@ -10,15 +10,6 @@ LucasLehmer::LucasLehmer() : Algorithm("Lucas Lehmer Primality Test") {
     }
 }
 
-void LucasLehmer::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 void LucasLehmer::runCode(int size) {
     RDTSC_START()
     RDTSC_STOP()

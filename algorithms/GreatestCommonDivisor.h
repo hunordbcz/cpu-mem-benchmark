@@ -12,8 +12,6 @@ class GreatestCommonDivisor : public Algorithm {
 public:
     GreatestCommonDivisor();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

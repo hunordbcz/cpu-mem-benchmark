@@ -12,8 +12,6 @@ class LIIDS : public Algorithm {
 public:
     LIIDS();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

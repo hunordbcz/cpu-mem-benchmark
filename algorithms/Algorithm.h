@@ -27,6 +27,8 @@
                      : "=r" (end_hi), "=r" (end_lo) \
                      :: "%rax", "%rbx", "%rcx", "%rdx");
 
+#define ITERATIONS 3
+
 using namespace std;
 
 class Algorithm {
@@ -59,7 +61,7 @@ protected:
     virtual void runCode(int size) = 0;
 
 public:
-    virtual void runTest() = 0;
+    void runTest();
 
     long long getFinalScore();
 

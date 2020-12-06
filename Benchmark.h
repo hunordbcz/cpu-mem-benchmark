@@ -16,6 +16,10 @@
 #include "algorithms/Ackermann.h"
 #include "algorithms/LucasLehmer.h"
 #include "algorithms/LIIDS.h"
+#include "algorithms/RandomAccessMemory.h"
+#include "algorithms/NormalAccessMemory.h"
+#include "algorithms/BackwardAccessMemory.h"
+#include "algorithms/FillMemory.h"
 
 using namespace std;
 
@@ -112,9 +116,10 @@ public:
         cpuAlgorithms.push_back(new LIIDS);
 //        cpuAlgorithms.push_back(new Ackermann);
         cpuAlgorithms.push_back(new LucasLehmer);
-        memoryAlgorithms.push_back(new TestAlgorithm);
-        memoryAlgorithms.push_back(new TestAlgorithm);
-        memoryAlgorithms.push_back(new TestAlgorithm);
+        memoryAlgorithms.push_back(new RandomAccessMemory);
+        memoryAlgorithms.push_back(new NormalAccessMemory);
+        memoryAlgorithms.push_back(new BackwardAccessMemory);
+        memoryAlgorithms.push_back(new FillMemory);
 
         this->ui = new UI(cpuAlgorithms, memoryAlgorithms);
         this->currentStatus = SETUP;

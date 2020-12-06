@@ -12,8 +12,6 @@ class PiApproximation : public Algorithm {
 public:
     PiApproximation();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

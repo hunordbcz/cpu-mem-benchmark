@@ -10,15 +10,6 @@ PiApproximation::PiApproximation() : Algorithm("Pi approximation with Taylor ser
     }
 }
 
-void PiApproximation::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 void PiApproximation::runCode(int size) {
     RDTSC_START()
     double sum = 0.0;

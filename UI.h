@@ -134,6 +134,7 @@ private:
     void printTestingMenu() {
         if (showSpecs) {
             systemInfo->printCPUInfo();
+            cout<<endl;
         }
 
         cout

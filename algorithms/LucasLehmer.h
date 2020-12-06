@@ -12,8 +12,6 @@ class LucasLehmer : public Algorithm {
 public:
     LucasLehmer();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

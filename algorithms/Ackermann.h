@@ -12,8 +12,6 @@ class Ackermann : public Algorithm {
 public:
     Ackermann();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

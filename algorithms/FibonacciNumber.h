@@ -12,8 +12,6 @@ class FibonacciNumber : public Algorithm {
 public:
     FibonacciNumber();
 
-    void runTest() override;
-
 protected:
     void runCode(int size) override;
 };

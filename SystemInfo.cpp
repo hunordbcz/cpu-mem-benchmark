@@ -170,5 +170,5 @@ void SystemInfo::printCPUInfo() {
     lastSysCPU = timeSample.tms_stime;
     lastUserCPU = timeSample.tms_utime;
 
-    cout << "CPU currently used by this process: " << percent << endl;
+    cout << "Current Core usage: " << percent * get_nprocs_conf() << endl;
 }

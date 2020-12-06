@@ -10,15 +10,6 @@ Ackermann::Ackermann() : Algorithm("Ackermann") {
     }
 }
 
-void Ackermann::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 int ack(int n, int m) {
     if (m == 0) return n + 1;
     if (n == 0) return ack(m - 1, 1);

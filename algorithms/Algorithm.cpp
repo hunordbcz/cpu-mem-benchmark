@@ -23,14 +23,12 @@ void Algorithm::execute(const vector<int> &iterations) {
 
     for (int size : iterations) {
         long long iterationScore = 0;
-        for (int i = 0; i < 10; i++) {
-            RDTSC_START()
+        for (int i = 0; i < ITERATIONS; i++) {
             runCode(size);
-//            RDTSC_STOP()
             iterationScore += getScore();
         }
 
-        scoreBySize[size] = iterationScore / 10;
+        scoreBySize[size] = iterationScore / ITERATIONS;
     }
 
     long long finalScore = 0;
@@ -78,4 +76,12 @@ void Algorithm::resetScores() {
     finalScore = -1;
 }
 
+void Algorithm::runTest() {
+    vector<int> sizes;
+    for (auto const &imap: scoreBySize) {
+        sizes.push_back(imap.first);
+    }
+
+    this->execute(sizes);
+}
 

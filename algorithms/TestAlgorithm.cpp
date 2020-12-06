@@ -6,15 +6,6 @@ TestAlgorithm::TestAlgorithm() : Algorithm("Test Algorithm") {
     }
 }
 
-void TestAlgorithm::runTest() {
-    vector<int> sizes;
-    for (auto const &imap: scoreBySize) {
-        sizes.push_back(imap.first);
-    }
-
-    this->execute(sizes);
-}
-
 void TestAlgorithm::runCode(int size) {
     RDTSC_START()
     int value = 10;
