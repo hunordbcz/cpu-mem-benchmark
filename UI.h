@@ -51,6 +51,48 @@ public:
         UI::showMenu = showMenu;
     }
 
+    void results() {
+        system("clear");
+        if (showSpecs) {
+            systemInfo->printCPUInfo();
+            cout << endl;
+        }
+
+        long long cpuScore = 0;
+        long long memoryScore = 0;
+
+        int cpuAlgos = 0;
+        int memoryAlgos = 0;
+
+        for(Algorithm *algorithm : cpuAlgorithms){
+            long long int score = algorithm->getFinalScore();
+            if(score != -1) {
+                cpuScore += score;
+                cpuAlgos ++;
+            }
+        }
+
+        if(cpuAlgos){
+            cpuScore /= cpuAlgos;
+        }
+
+
+        for(Algorithm *algorithm : memoryAlgorithms){
+            long long int score = algorithm->getFinalScore();
+            if(score != -1) {
+                memoryScore += score;
+                memoryAlgos ++;
+            }
+        }
+
+        if(memoryAlgos){
+            memoryScore /= memoryAlgos;
+        }
+
+        cout<<"CPU Score:\t " << cpuScore << endl;
+        cout<<"Memory Score:\t " << memoryScore << endl;
+    }
+
 private:
     vector<Algorithm *> cpuAlgorithms;
     vector<Algorithm *> memoryAlgorithms;

@@ -55,62 +55,19 @@ void SystemInfo::printCPUInfo() {
 
     struct sysinfo si{};
     sysinfo (&si);
-    cout << "Number of Cores conf.: \t" << get_nprocs_conf() << endl;
-    printf("system uptime : %ld days, %ld:%02ld:%02ld\n",
-           si.uptime / day, (si.uptime % day) / hour,
-           (si.uptime % hour) / minute, si.uptime % minute);
-    printf("total RAM   : %5.1f MB\n", si.totalram / megabyte);
-    printf("free RAM   : %5.1f MB\n", si.freeram / megabyte);
-    printf("process count : %d\n", si.procs);
-    cout << endl;
 
 
     //Virtual Memory
 
-
+    cout << "Total Cores:\t " << get_nprocs_conf() << endl;
     struct sysinfo memInfo;
-
     sysinfo (&memInfo);
-    long long totalVirtualMem = memInfo.totalram;
-//Add other values in next statement to avoid int overflow on right hand side...
-    totalVirtualMem += memInfo.totalswap;
-    totalVirtualMem *= memInfo.mem_unit;
-    cout << "Virtual Memory: " << totalVirtualMem << endl;
+    printf("Total RAM:\t %5.1f MB\n", si.totalram / megabyte);
 
-    //Virtual Memory Currently used
-    long long virtualMemUsed = memInfo.totalram - memInfo.freeram;
-//Add other values in next statement to avoid int overflow on right hand side...
-    virtualMemUsed += memInfo.totalswap - memInfo.freeswap;
-    virtualMemUsed *= memInfo.mem_unit;
-    cout << "Virtual Memory currently used: " << virtualMemUsed << endl;
-
-    //Virtual Memory currently used by current process
+    //Physical Memory used
     FILE *file = fopen("/proc/self/status", "r");
     int result = -1;
     char line[128];
-
-    while (fgets(line, 128, file) != NULL) {
-        if (strncmp(line, "VmSize:", 7) == 0) {
-            result = parseLine(line);
-            break;
-        }
-    }
-    fclose(file);
-    cout << "Virtual Memory currently used by current process: " << result << endl;
-
-    long long totalPhysMem = memInfo.totalram;
-//Multiply in next statement to avoid int overflow on right hand side...
-    totalPhysMem *= memInfo.mem_unit;
-    cout << "Total physical memory:" << totalPhysMem << endl;
-
-    long long physMemUsed = memInfo.totalram - memInfo.freeram;
-//Multiply in next statement to avoid int overflow on right hand side...
-    physMemUsed *= memInfo.mem_unit;
-    cout << "Physical memory used:" << physMemUsed << endl;
-
-    //Physical Memory used
-    file = fopen("/proc/self/status", "r");
-    result = -1;
 
     while (fgets(line, 128, file) != NULL) {
         if (strncmp(line, "VmRSS:", 6) == 0) {
@@ -119,39 +76,12 @@ void SystemInfo::printCPUInfo() {
         }
     }
     fclose(file);
-    cout << "Physical Memory currently used by current process: " << result << endl;
+    printf("RAM usage:\t %2.1f MB\n", result / (double) 1024);
 
 
     //CPU used
     double percent;
-    unsigned long long totalUser, totalUserLow, totalSys, totalIdle, total;
-
-    file = fopen("/proc/stat", "r");
-    fscanf(file, "cpu %llu %llu %llu %llu", &totalUser, &totalUserLow,
-           &totalSys, &totalIdle);
-    fclose(file);
-
-    if (totalUser < lastTotalUser || totalUserLow < lastTotalUserLow ||
-        totalSys < lastTotalSys || totalIdle < lastTotalIdle) {
-        //Overflow detection. Just skip this value.
-        percent = -1.0;
-    } else {
-        total = (totalUser - lastTotalUser) + (totalUserLow - lastTotalUserLow) +
-                (totalSys - lastTotalSys);
-        percent = total;
-        total += (totalIdle - lastTotalIdle);
-        percent /= total;
-        percent *= 100;
-    }
-
-    lastTotalUser = totalUser;
-    lastTotalUserLow = totalUserLow;
-    lastTotalSys = totalSys;
-    lastTotalIdle = totalIdle;
-
-    cout << "Cpu used: " << percent << endl;
-
-    struct tms timeSample;
+    struct tms timeSample{};
     clock_t now;
 
     now = times(&timeSample);
@@ -170,5 +100,12 @@ void SystemInfo::printCPUInfo() {
     lastSysCPU = timeSample.tms_stime;
     lastUserCPU = timeSample.tms_utime;
 
-    cout << "Current Core usage: " << percent * get_nprocs_conf() << endl;
+    double cpuUsage = percent * get_nprocs_conf();
+    if (cpuUsage > 100) {
+        cpuUsage = 100;
+    } else if (cpuUsage < 0) {
+        cpuUsage = 0;
+    }
+
+    cout << "CPU Usage:\t " << cpuUsage << "%" << endl;
 }

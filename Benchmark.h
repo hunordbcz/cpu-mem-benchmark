@@ -115,7 +115,7 @@ public:
         cpuAlgorithms.push_back(new PiApproximation);
         cpuAlgorithms.push_back(new LIIDS);
 //        cpuAlgorithms.push_back(new Ackermann);
-        cpuAlgorithms.push_back(new LucasLehmer);
+//        cpuAlgorithms.push_back(new LucasLehmer);
         memoryAlgorithms.push_back(new RandomAccessMemory);
         memoryAlgorithms.push_back(new NormalAccessMemory);
         memoryAlgorithms.push_back(new BackwardAccessMemory);
@@ -129,7 +129,7 @@ public:
         setup();
     }
 
-    void setup(){
+    void setup() {
         currentStatus = SETUP;
         string message;
         do {
@@ -140,7 +140,7 @@ public:
         testing();
     }
 
-    void testing(){
+    void testing() {
         currentStatus = TEST;
         thread thread(&Benchmark::runTests, this);
         do {
@@ -150,9 +150,17 @@ public:
         ui->refreshTesting();
         thread.join();
 
-        string test;
-        cin >> test;
+        results();
 
+
+    }
+
+    void results() {
+        ui->results();
+
+        cout << "Press any key to continue";
+        char test;
+        cin >> test;
         setup();
     }
 
