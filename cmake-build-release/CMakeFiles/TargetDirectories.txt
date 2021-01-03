@@ -1,0 +1,3 @@
+/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/CMakeFiles/edit_cache.dir
+/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/CMakeFiles/rebuild_cache.dir
+/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/CMakeFiles/scs_terminal.dir

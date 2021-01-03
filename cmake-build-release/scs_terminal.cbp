@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="scs_terminal"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="scs_terminal">
+				<Option output="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/scs_terminal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 scs_terminal"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="scs_terminal/fast">
+				<Option output="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/scs_terminal" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 scs_terminal/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/hdebreczeni/CLionProjects/scs-terminal/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/Benchmark.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/Benchmark.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/SystemInfo.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/SystemInfo.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/UI.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/UI.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/Ackermann.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/Ackermann.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/Algorithm.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/Algorithm.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/BackwardAccessMemory.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/BackwardAccessMemory.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/FibonacciNumber.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/FibonacciNumber.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/FillMemory.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/FillMemory.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/GreatestCommonDivisor.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/GreatestCommonDivisor.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/LIIDS.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/LIIDS.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/MemoryAlgorithm.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/MemoryAlgorithm.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/NormalAccessMemory.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/NormalAccessMemory.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/PiApproximation.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/PiApproximation.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/RandomAccessMemory.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/algorithms/RandomAccessMemory.h">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/main.cpp">
+			<Option target="scs_terminal"/>
+		</Unit>
+		<Unit filename="/home/hdebreczeni/CLionProjects/scs-terminal/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
