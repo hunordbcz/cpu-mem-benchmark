@@ -8,7 +8,7 @@ FillMemory::FillMemory() : MemoryAlgorithm("Fill Memory") {
 
 }
 
-void FillMemory::runCode(int size) {
+int FillMemory::runCode(int size) {
     int nrElements = (size * 1024 * 1024) / sizeof(Node) / 2;
 
     vector<Node*> nodes(nrElements);
@@ -18,15 +18,10 @@ void FillMemory::runCode(int size) {
     }
     RDTSC_STOP()
 
-    Node *node  = nodes[0];
-    nodes.clear(); nodes.shrink_to_fit();
-
-    Node* prev;
-    while (node) {
-        prev = node;
-        node = node->next;
-        delete(prev);
+    for (int i=0; i<nrElements; ++i) {
+        delete(nodes[i]);
     }
 
-
+    nodes.clear(); nodes.shrink_to_fit();
+    return 0;
 }

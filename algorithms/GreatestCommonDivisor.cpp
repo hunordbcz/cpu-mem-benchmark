@@ -11,7 +11,7 @@ GreatestCommonDivisor::GreatestCommonDivisor() : Algorithm("Greatest Common Divi
     }
 }
 
-void GreatestCommonDivisor::runCode(int size) {
+int GreatestCommonDivisor::runCode(int size) {
     int a = size;
     int b = sqrt(size);
     RDTSC_START()
@@ -27,4 +27,5 @@ void GreatestCommonDivisor::runCode(int size) {
     }
     (void) a;
     RDTSC_STOP()
+    return a;
 }

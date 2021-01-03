@@ -10,7 +10,7 @@ PiApproximation::PiApproximation() : Algorithm("Pi approximation with Taylor ser
     }
 }
 
-void PiApproximation::runCode(int size) {
+int PiApproximation::runCode(int size) {
     RDTSC_START()
     double sum = 0.0;
     int sign = 1;
@@ -19,7 +19,8 @@ void PiApproximation::runCode(int size) {
         sign *= -1;
     }
     (void) (4.0 * sum);
-    RDTSC_STOP();
+    RDTSC_STOP()
+    return (4.0 * sum);
 }
 
 

@@ -10,7 +10,7 @@ FibonacciNumber::FibonacciNumber() : Algorithm("Nth Fibonacci Number") {
     }
 }
 
-void FibonacciNumber::runCode(int size) {
+int FibonacciNumber::runCode(int size) {
     RDTSC_START()
     int a = 0, b = 1, c, i;
     for (i = 2; i <= size; i++) {
@@ -20,4 +20,5 @@ void FibonacciNumber::runCode(int size) {
     }
     (void)c;
     RDTSC_STOP()
+    return c;
 }

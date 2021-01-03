@@ -4,14 +4,14 @@
 
 #include "NormalAccessMemory.h"
 
-void NormalAccessMemory::runCode(int size) {
+int NormalAccessMemory::runCode(int size) {
     int nrElements = (size * 1024 * 1024) / sizeof(Node) / 2;
 
     vector<Node*> nodes(nrElements);
     for (int i=0; i<nrElements; ++i) {
         nodes[i] = new(nothrow) Node;
         if(!nodes[i]){
-            return;
+            return 0;
         }
     }
 
@@ -36,6 +36,8 @@ void NormalAccessMemory::runCode(int size) {
         node = node->next;
         delete(prev);
     }
+
+    return 0;
 }
 
 NormalAccessMemory::NormalAccessMemory() : MemoryAlgorithm("Normal Access Memory") {}

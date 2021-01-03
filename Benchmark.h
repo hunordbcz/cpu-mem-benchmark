@@ -9,12 +9,10 @@
 #include <vector>
 #include <thread>
 #include "UI.h"
-#include "algorithms/TestAlgorithm.h"
 #include "algorithms/GreatestCommonDivisor.h"
 #include "algorithms/FibonacciNumber.h"
 #include "algorithms/PiApproximation.h"
 #include "algorithms/Ackermann.h"
-#include "algorithms/LucasLehmer.h"
 #include "algorithms/LIIDS.h"
 #include "algorithms/RandomAccessMemory.h"
 #include "algorithms/NormalAccessMemory.h"
@@ -158,14 +156,14 @@ public:
     void results() {
         ui->results();
 
-        cout << "Press any key to continue";
+        cout << endl<< "Enter any key to exit";
         char test;
         cin >> test;
-        setup();
     }
 
     void runTests() {
         for (Algorithm *algorithm : cpuAlgorithms) {
+            cout<<algorithm->getName()<<endl;
             if (!algorithm->getIsActive()) {
                 continue;
             }

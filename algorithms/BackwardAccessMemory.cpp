@@ -8,14 +8,14 @@ BackwardAccessMemory::BackwardAccessMemory() : MemoryAlgorithm("Backward Access 
 
 }
 
-void BackwardAccessMemory::runCode(int size) {
+int BackwardAccessMemory::runCode(int size) {
     int nrElements = (size * 1024 * 1024) / sizeof(Node) / 2;
 
     vector<Node*> nodes(nrElements);
     for (int i=0; i<nrElements; ++i) {
         nodes[i] = new(nothrow) Node;
         if(!nodes[i]){
-            return;
+            return 0;
         }
     }
 
@@ -42,4 +42,5 @@ void BackwardAccessMemory::runCode(int size) {
         node = node->next;
         delete(prev);
     }
+    return 0;
 }

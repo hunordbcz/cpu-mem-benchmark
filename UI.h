@@ -30,13 +30,14 @@ public:
     }
 
     void refreshSetup(const string &message) {
-        system("clear");
+//        system("clear");
         printSetupMenu(message);
     }
 
     void refreshTesting() {
-        system("clear");
+//        system("clear");
         printTestingMenu();
+        sleep(1);
     }
 
     void setShowSpecs(bool showSpecs) {
@@ -52,11 +53,8 @@ public:
     }
 
     void results() {
-        system("clear");
-        if (showSpecs) {
-            systemInfo->printCPUInfo();
-            cout << endl;
-        }
+//        system("clear");
+        printTestingMenu();
 
         long long cpuScore = 0;
         long long memoryScore = 0;
@@ -64,33 +62,35 @@ public:
         int cpuAlgos = 0;
         int memoryAlgos = 0;
 
-        for(Algorithm *algorithm : cpuAlgorithms){
+        for (Algorithm *algorithm : cpuAlgorithms) {
             long long int score = algorithm->getFinalScore();
-            if(score != -1) {
+            if (score != -1) {
                 cpuScore += score;
-                cpuAlgos ++;
+                cpuAlgos++;
             }
         }
 
-        if(cpuAlgos){
+        if (cpuAlgos) {
             cpuScore /= cpuAlgos;
         }
 
 
-        for(Algorithm *algorithm : memoryAlgorithms){
+        for (Algorithm *algorithm : memoryAlgorithms) {
             long long int score = algorithm->getFinalScore();
-            if(score != -1) {
+            if (score != -1) {
                 memoryScore += score;
-                memoryAlgos ++;
+                memoryAlgos++;
             }
         }
 
-        if(memoryAlgos){
+        if (memoryAlgos) {
             memoryScore /= memoryAlgos;
         }
 
-        cout<<"CPU Score:\t " << cpuScore << endl;
-        cout<<"Memory Score:\t " << memoryScore << endl;
+        cout << endl<<  "| ----------------------------" << endl;
+        cout << "| CPU Score:\t " << cpuScore << endl;
+        cout << "| Memory Score:\t " << memoryScore << endl;
+        cout << "| ----------------------------" << endl;
     }
 
 private:
@@ -108,27 +108,31 @@ private:
 
         if (showMenu) {
             cout
-                    << "CPU algorithms to be tested:" << endl;
+                    << "|----------------------------------" << endl
+                    << "|   CPU algorithms to be tested:\n|" << endl;
 
             for (int i = 0; i < cpuAlgorithms.size(); i++) {
                 Algorithm *algorithm = cpuAlgorithms.at(i);
-                cout << i << " " << (algorithm->getIsActive() ? "[YES]" : "[NO]")
+                cout << "|\t" << i << " " << (algorithm->getIsActive() ? "[YES]" : "[NO]")
                      << " - " << algorithm->getName() << endl;
             }
 
             cout
-                    << "------------------------" << endl
-                    << "Memory algorithms to be tested:" << endl;
+                    << "|----------------------------------" << endl << endl;
+
+            cout
+                    << "|----------------------------------" << endl
+                    << "|   Memory algorithms to be tested:\n|" << endl;
 
             unsigned int cpuSize = cpuAlgorithms.size();
             for (int i = 0; i < memoryAlgorithms.size(); i++) {
                 Algorithm *algorithm = memoryAlgorithms.at(i);
-                cout << i + cpuSize << " " << (algorithm->getIsActive() ? "[YES]" : "[NO]")
+                cout << "|\t" << i + cpuSize << " " << (algorithm->getIsActive() ? "[YES]" : "[NO]")
                      << " - " << algorithm->getName() << endl;
             }
 
             cout
-                    << "------------------------" << endl;
+                    << "|----------------------------------" << endl;
         }
 
         if (showHelp) {
@@ -137,12 +141,12 @@ private:
 
 
         if (!message.empty()) {
-            cout
-                    << "Message: " << message << endl
-                    << "------------------------" << endl;
+            cout << "\n|----------------------------------" << endl
+                 << "| Message: " << message << endl
+                 << "|----------------------------------" << endl;
         }
 
-        cout << "> ";
+        cout << "\n> ";
     }
 
     void printAlgorithmDetails(Algorithm *algorithm) {
@@ -176,7 +180,7 @@ private:
     void printTestingMenu() {
         if (showSpecs) {
             systemInfo->printCPUInfo();
-            cout<<endl;
+            cout << endl;
         }
 
         cout
@@ -192,7 +196,6 @@ private:
         for (Algorithm *algorithm: memoryAlgorithms) {
             printAlgorithmDetails(algorithm);
         }
-        sleep(1);
     }
 
     void run() {

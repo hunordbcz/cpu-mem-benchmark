@@ -9,7 +9,7 @@ void randomArray(int array[], int size) {
         array[i] = rand() % size;
 }
 
-void LIIDS::runCode(int N) {
+int LIIDS::runCode(int N) {
     int arr[N];
     randomArray(arr, N);
     RDTSC_START()
@@ -38,6 +38,7 @@ void LIIDS::runCode(int N) {
         ans = max(ans, dp[i]);
     }
     RDTSC_STOP()
+    return ans;
 }
 
 LIIDS::LIIDS() : Algorithm("Length of longest increasing index dividing subsequence") {

@@ -58,7 +58,7 @@ protected:
 
     void execute(const vector<int> &iterations);
 
-    virtual void runCode(int size) = 0;
+    virtual int runCode(int size) = 0;
 
 public:
     void runTest();

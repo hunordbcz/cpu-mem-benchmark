@@ -17,7 +17,7 @@ public:
     explicit MemoryAlgorithm(const string &name);
 
 protected:
-    virtual void runCode(int size) = 0;
+    virtual int runCode(int size) = 0;
 
     struct Node {
         int payload;

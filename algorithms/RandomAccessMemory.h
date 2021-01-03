@@ -12,7 +12,7 @@ public:
     RandomAccessMemory();
 
 protected:
-    void runCode(int size) override;
+    int runCode(int size) override;
 
 
 };

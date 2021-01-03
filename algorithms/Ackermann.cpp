@@ -16,10 +16,11 @@ int ack(int n, int m) {
     return ack(m - 1, ack(m, n - 1));
 }
 
-void Ackermann::runCode(int size) {
-    RDTSC_STOP()
-    int callSize = getScore();
+int Ackermann::runCode(int size) {
+    int val;
     RDTSC_START();
-    ack(size, size);
+    val = ack(size, size);
     RDTSC_STOP();
+
+    return val;
 }
